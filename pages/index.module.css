@@ -1,0 +1,24 @@
+.landingPage {
+  background-color: #f5eee8;
+  text-align: center;
+}
+
+.landingPage__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.landingPage__content {
+  flex-grow: 1;
+}
+
+.landingPage__banner {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.landingPage__text {
+  padding: 2rem 0 1rem 0;
+}

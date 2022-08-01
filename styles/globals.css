@@ -1,9 +1,21 @@
+:root {
+  --background: #f2f2f2;
+  --color-cloud: #cecbc8;
+  --color-contrast: #f5eee8;
+  --color-zeus: #28221e;
+  --color-kabul: #614e41;
+  --color-shadow: #7f6951;
+  --max-content-width: 100rem;
+}
+
 html,
 body {
+  font-family: "Outfit", sans-serif;
+  font-weight: 200;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: var(--color-zeus);
+  background: var(--background);
 }
 
 a {
@@ -15,7 +27,18 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
+.container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 85%;
+  margin: 0 auto;
+  padding: 5rem 0;
+}
+
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -23,4 +46,4 @@ a {
     color: white;
     background: black;
   }
-}
+} */

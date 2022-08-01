@@ -1,0 +1,11 @@
+.text--zeus {
+  color: var(--color-zeus);
+}
+
+.text--kabul {
+  color: var(--color-kabul);
+}
+
+.text--white {
+  color: var(--color-contrast);
+}
