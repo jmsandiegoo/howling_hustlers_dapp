@@ -4,6 +4,7 @@ import Image from "next/image";
 import Text from "../components/Text";
 import Button from "../components/Button";
 import styles from "./index.module.css";
+import Link from "next/link";
 
 const LandingPage: NextPage = () => {
   return (
@@ -27,9 +28,13 @@ const LandingPage: NextPage = () => {
             Howling hustlers NFTs awaits. <br />
             Come and join the pack!
           </Text>
-          <Button size="lg" color="primary">
-            ENTER
-          </Button>
+          <Link href="/home" passHref>
+            <a>
+              <Button size="lg" color="primary">
+                ENTER
+              </Button>
+            </a>
+          </Link>
         </div>
       </section>
     </main>
