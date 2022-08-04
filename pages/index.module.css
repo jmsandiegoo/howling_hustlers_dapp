@@ -1,24 +1,24 @@
-.landingPage {
+.landing-page {
   background-color: #f5eee8;
   text-align: center;
 }
 
-.landingPage__container {
+.landing-page__container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-.landingPage__content {
+.landing-page__content {
   flex-grow: 1;
 }
 
-.landingPage__banner {
+.landing-page__banner {
   max-width: 550px;
   margin: 0 auto;
 }
 
-.landingPage__text {
+.landing-page__text {
   padding: 2rem 0 1rem 0;
 }

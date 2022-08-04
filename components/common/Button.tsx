@@ -1,16 +1,18 @@
 import cn from "classnames";
 import styles from "./Button.module.css";
+import type { otherClassNames } from "../../types";
 
 type Size = "sm" | "md" | "lg";
-type Color = "primary" | "secondary" | string;
+type Type = "primary" | "secondary" | string;
 
 interface ButtonProps {
   size: Size;
-  color: Color;
+  type: Type;
+  otherClassNames?: otherClassNames;
   children: React.ReactNode;
 }
 
-const Button = ({ size, color, children }: ButtonProps) => {
+const Button = ({ size, type, otherClassNames, children }: ButtonProps) => {
   return (
     <button
       className={cn({
@@ -18,8 +20,10 @@ const Button = ({ size, color, children }: ButtonProps) => {
         [styles["button--sm"]]: size === "sm",
         [styles["button--md"]]: size === "md",
         [styles["button--lg"]]: size === "lg",
-        [styles["button--primary"]]: color === "primary",
-        [styles["button--secondary"]]: color === "secondary",
+        [styles["button--primary"]]: type === "primary",
+        [styles["button--secondary"]]: type === "secondary",
+        [styles["button--menu"]]: type === "menu",
+        ...otherClassNames,
       })}
     >
       {children}

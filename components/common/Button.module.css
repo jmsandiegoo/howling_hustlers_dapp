@@ -12,7 +12,7 @@
 }
 
 .button--sm {
-  padding: 0.1rem;
+  padding: 0.2rem 1rem;
 }
 
 .button--md {
@@ -34,8 +34,10 @@
 }
 
 .button--menu {
-  background-color: var(--color-kabul);
-  color: var(--color-contrast);
+  background-color: #e4e4e4;
+  color: var(--color-kabul);
+
+  filter: none;
 }
 
 .button--menu .active {

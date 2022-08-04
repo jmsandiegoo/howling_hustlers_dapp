@@ -1,20 +1,20 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import Text from "../components/Text";
-import Button from "../components/Button";
+import Text from "../components/common/Text";
+import Button from "../components/common/Button";
 import styles from "./index.module.css";
 import Link from "next/link";
 
 const LandingPage: NextPage = () => {
   return (
-    <main className={`${styles.landingPage}`}>
+    <main className={`${styles["landing-page"]}`}>
       <Head>
         <title>Howling Hustlers</title>
       </Head>
-      <section className={`container ${styles.landingPage__container}`}>
-        <div className={`content ${styles.landingPage__content}`}>
-          <div className={styles.landingPage__banner}>
+      <section className={`container ${styles["landing-page__container"]}`}>
+        <div className={`content ${styles["landing-page__content"]}`}>
+          <div className={styles["landing-page__banner"]}>
             <Image
               src="/images/HH_Landing.png"
               alt="Howling Hustlers Landing Banner"
@@ -24,13 +24,13 @@ const LandingPage: NextPage = () => {
             />
           </div>
 
-          <Text variant="p" className={styles.landingPage__text}>
+          <Text variant="p" className={styles["landing-page__text"]}>
             Howling hustlers NFTs awaits. <br />
             Come and join the pack!
           </Text>
           <Link href="/home" passHref>
             <a>
-              <Button size="lg" color="primary">
+              <Button size="lg" type="primary">
                 ENTER
               </Button>
             </a>

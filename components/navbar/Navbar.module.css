@@ -1,0 +1,27 @@
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.main-navbar > div {
+  display: flex;
+}
+
+.main-navbar__links,
+.main-navbar__socials {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  user-select: none;
+}
+
+.main-navbar__socials {
+  padding-left: 0;
+}
+
+.main-navbar__links li {
+  padding: 0.5rem;
+}
