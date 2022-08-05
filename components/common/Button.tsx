@@ -16,7 +16,7 @@ const Button = ({ size, type, otherClassNames, children }: ButtonProps) => {
   return (
     <button
       className={cn({
-        [styles.button]: true,
+        button: true,
         [styles["button--sm"]]: size === "sm",
         [styles["button--md"]]: size === "md",
         [styles["button--lg"]]: size === "lg",
