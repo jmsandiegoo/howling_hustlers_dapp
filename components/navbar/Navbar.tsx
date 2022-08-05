@@ -104,7 +104,7 @@ const Navbar = () => {
             <span className={styles["hamburger__bar3"]}></span>
           </div>
           <div className={styles["main-navbar__overlay"]}>
-            <ul>
+            <ul className={styles["overlay__links"]}>
               {menuOptions.map((e, i) => {
                 return (
                   <li
@@ -121,6 +121,47 @@ const Navbar = () => {
                 );
               })}
             </ul>
+            <ul className={styles["overlay__socials"]}>
+              <li>
+                <a href="https://discord.com/" target="_blank" rel="noreferrer">
+                  <Image
+                    src="/images/DiscordLogo.png"
+                    alt="Howling Hustlers Discord Button Image"
+                    // width={25}
+                    // height={20}
+                    width={20}
+                    height={15}
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://instagram.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Image
+                    src="/images/InstagramLogo.png"
+                    alt="Howling Hustlers Instagram Button Image"
+                    width={20}
+                    height={18}
+                  />
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/" target="_blank" rel="noreferrer">
+                  <Image
+                    src="/images/TwitterLogo.png"
+                    alt="Howling Hustlers Twitter Button Image"
+                    width={20}
+                    height={15}
+                  />
+                </a>
+              </li>
+            </ul>
+            <small className={styles["overlay__copyright"]}>
+              Copyright 2022 Howling Hustlers
+            </small>
           </div>
         </>
       )}

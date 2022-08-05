@@ -15,7 +15,7 @@
   align-self: center;
 }
 
-.main-navbar li {
+.main-navbar__menu li {
   padding-right: 1rem;
 }
 
@@ -54,12 +54,36 @@
 }
 
 .main-navbar__overlay {
+  display: block !important;
   position: absolute;
   left: 0;
   right: 0;
   top: 84px;
   height: calc(100vh - 84px);
+  background: white;
 }
 
-.main-navbar__overlay li {
+.overlay__links,
+.overlay__socials {
+  text-align: center;
+}
+
+.overlay__links li {
+  padding: 1rem;
+}
+
+.overlay__socials li {
+  padding: 0.5rem;
+}
+
+.overlay__socials {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.overlay__copyright {
+  display: block;
+  text-align: center;
 }
