@@ -38,6 +38,7 @@
 .main-navbar__hamburger {
   display: block !important;
   align-self: center;
+  margin-left: 1rem;
   cursor: pointer;
 }
 

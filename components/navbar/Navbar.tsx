@@ -106,29 +106,35 @@ const Navbar = () => {
       {/* Nav menu for Mobile */}
       {windowSize.width && windowSize.width <= screenBreakpoints.md && (
         <>
-          <div
-            className={styles["main-navbar__hamburger"]}
-            onClick={toggleOverlayMenu}
-          >
-            <span
-              className={cn({
-                [styles["hamburger__bar1"]]: true,
-                [styles["hamburger__bar1--active"]]: isOverlayOpen,
-              })}
-            ></span>
-            <span
-              className={cn({
-                [styles["hamburger__bar2"]]: true,
-                [styles["hamburger__bar2--active"]]: isOverlayOpen,
-              })}
-            ></span>
-            <span
-              className={cn({
-                [styles["hamburger__bar3"]]: true,
-                [styles["hamburger__bar3--active"]]: isOverlayOpen,
-              })}
-            ></span>
+          <div>
+            <Button size="sm" type="primary">
+              CONNECT
+            </Button>
+            <div
+              className={styles["main-navbar__hamburger"]}
+              onClick={toggleOverlayMenu}
+            >
+              <span
+                className={cn({
+                  [styles["hamburger__bar1"]]: true,
+                  [styles["hamburger__bar1--active"]]: isOverlayOpen,
+                })}
+              ></span>
+              <span
+                className={cn({
+                  [styles["hamburger__bar2"]]: true,
+                  [styles["hamburger__bar2--active"]]: isOverlayOpen,
+                })}
+              ></span>
+              <span
+                className={cn({
+                  [styles["hamburger__bar3"]]: true,
+                  [styles["hamburger__bar3--active"]]: isOverlayOpen,
+                })}
+              ></span>
+            </div>
           </div>
+
           <CSSTransition
             in={isOverlayOpen}
             timeout={500}
