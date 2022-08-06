@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../common/Button";
@@ -5,14 +6,21 @@ import styles from "./Navbar.module.css";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { Size } from "../../types";
 import { screenBreakpoints } from "../../constants";
+import { CSSTransition } from "react-transition-group";
+import cn from "classnames";
 
 const Navbar = () => {
+  const [isOverlayOpen, setIsOverlayOpen] = useState<boolean>(false);
   const windowSize: Size = useWindowSize();
   const menuOptions = [
     { label: "Home", pathName: "/home" },
     { label: "Mint", pathName: "/mint" },
     { label: "Collection", pathName: "/collection" },
   ];
+
+  const toggleOverlayMenu = () => {
+    setIsOverlayOpen((prevIsOverlayOpen) => !prevIsOverlayOpen);
+  };
 
   return (
     <nav className={styles["main-navbar"]}>
@@ -98,71 +106,109 @@ const Navbar = () => {
       {/* Nav menu for Mobile */}
       {windowSize.width && windowSize.width <= screenBreakpoints.md && (
         <>
-          <div className={styles["main-navbar__hamburger"]}>
-            <span className={styles["hamburger__bar1"]}></span>
-            <span className={styles["hamburger__bar2"]}></span>
-            <span className={styles["hamburger__bar3"]}></span>
-          </div>
-          <div className={styles["main-navbar__overlay"]}>
-            <ul className={styles["overlay__links"]}>
-              {menuOptions.map((e, i) => {
-                return (
-                  <li
-                    key={i}
-                    onClick={() => {}}
-                    // className={
-                    //   location.pathname === e.pathName ? "active" : undefined
-                    // }
-                  >
-                    <Link href={e.pathName}>
-                      <a>{e.label}</a>
-                    </Link>
-                  </li>
-                );
+          <div
+            className={styles["main-navbar__hamburger"]}
+            onClick={toggleOverlayMenu}
+          >
+            <span
+              className={cn({
+                [styles["hamburger__bar1"]]: true,
+                [styles["hamburger__bar1--active"]]: isOverlayOpen,
               })}
-            </ul>
-            <ul className={styles["overlay__socials"]}>
-              <li>
-                <a href="https://discord.com/" target="_blank" rel="noreferrer">
-                  <Image
-                    src="/images/DiscordLogo.png"
-                    alt="Howling Hustlers Discord Button Image"
-                    // width={25}
-                    // height={20}
-                    width={20}
-                    height={15}
-                  />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://instagram.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Image
-                    src="/images/InstagramLogo.png"
-                    alt="Howling Hustlers Instagram Button Image"
-                    width={20}
-                    height={18}
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://twitter.com/" target="_blank" rel="noreferrer">
-                  <Image
-                    src="/images/TwitterLogo.png"
-                    alt="Howling Hustlers Twitter Button Image"
-                    width={20}
-                    height={15}
-                  />
-                </a>
-              </li>
-            </ul>
-            <small className={styles["overlay__copyright"]}>
-              Copyright 2022 Howling Hustlers
-            </small>
+            ></span>
+            <span
+              className={cn({
+                [styles["hamburger__bar2"]]: true,
+                [styles["hamburger__bar2--active"]]: isOverlayOpen,
+              })}
+            ></span>
+            <span
+              className={cn({
+                [styles["hamburger__bar3"]]: true,
+                [styles["hamburger__bar3--active"]]: isOverlayOpen,
+              })}
+            ></span>
           </div>
+          <CSSTransition
+            in={isOverlayOpen}
+            timeout={500}
+            classNames={{
+              enter: styles["main-navbar__overlay--enter"],
+              enterActive: styles["main-navbar__overlay--enter-active"],
+              exitActive: styles["main-navbar__overlay--exit-active"],
+              exit: styles["main-navbar__overlay--exit"],
+            }}
+            unmountOnExit
+          >
+            <div className={`${styles["main-navbar__overlay"]}`}>
+              <ul className={styles["overlay__links"]}>
+                {menuOptions.map((e, i) => {
+                  return (
+                    <li
+                      key={i}
+                      onClick={() => {}}
+                      // className={
+                      //   location.pathname === e.pathName ? "active" : undefined
+                      // }
+                    >
+                      <Link href={e.pathName}>
+                        <a>{e.label}</a>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+              <ul className={styles["overlay__socials"]}>
+                <li>
+                  <a
+                    href="https://discord.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Image
+                      src="/images/DiscordLogo.png"
+                      alt="Howling Hustlers Discord Button Image"
+                      // width={25}
+                      // height={20}
+                      width={20}
+                      height={15}
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://instagram.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Image
+                      src="/images/InstagramLogo.png"
+                      alt="Howling Hustlers Instagram Button Image"
+                      width={20}
+                      height={18}
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://twitter.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Image
+                      src="/images/TwitterLogo.png"
+                      alt="Howling Hustlers Twitter Button Image"
+                      width={20}
+                      height={15}
+                    />
+                  </a>
+                </li>
+              </ul>
+              <small className={styles["overlay__copyright"]}>
+                Copyright 2022 Howling Hustlers
+              </small>
+            </div>
+          </CSSTransition>
         </>
       )}
     </nav>
