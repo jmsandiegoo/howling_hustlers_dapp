@@ -19,6 +19,18 @@ body {
   background: var(--background);
 }
 
+h1 {
+  font-family: "Palatino Linotype", sans-serif;
+  font-size: 4.5rem;
+  letter-spacing: 0.05em;
+}
+
+h2 {
+  font-family: "Palatino Linotype", sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.05em;
+}
+
 li {
   list-style: none;
   padding: 0;

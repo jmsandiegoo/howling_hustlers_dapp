@@ -1,8 +1,36 @@
-.container {
-  padding: 0 2rem;
+.homepage__landing :global(.content) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 0;
 }
 
-.main {
+.landing__message {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.landing__message p {
+  text-align: end;
+  font-size: 1.3rem;
+}
+
+.landing__images {
+  padding-top: 2rem;
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  display: flex;
+  gap: 1rem;
+}
+
+.landing__image {
+  flex: 1;
+}
+
+/* .main {
   min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
@@ -126,4 +154,4 @@
   .logo img {
     filter: invert(1);
   }
-}
+} */
