@@ -41,7 +41,23 @@ const HomePage: NextPage = () => {
             </div>
           </div>
         </section>
-        <section></section>
+        <section className={`container ${styles["homepage__overview"]}`}>
+          <div className="content">
+            <h2>PROJECT OVERVIEW</h2>
+            <p>
+              Howling Hustlers is a wolf/huster inspired NFT collection that
+              consists of different traits. Our goal is to simply release cool
+              looking art to our holders for them to collect and showcase.
+            </p>
+            <p>
+              The collection consists of 2000 NFTs. Each NFT art is a wolf that
+              is unique and programmatically generated with varying traits and
+              rarity (expressions, headwear, clothing and more). These wolves
+              are in a form of ERC-721 tokens and hosted through IPFS. Pre-sale
+              and Public mint prices are 100 and 200 MATIC respectively
+            </p>
+          </div>
+        </section>
       </section>
     </MainPageLayout>
   );
