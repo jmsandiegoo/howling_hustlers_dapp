@@ -1,11 +1,55 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import MainPageLayout from "../components/layout/MainPageLayout";
-import Button from "../components/common/Button";
-import styles from "../styles/Home.module.css";
+import MainPageLayout from "components/layout/MainPageLayout";
+import Button from "components/common/Button";
+import styles from "styles/Home.module.css";
+import Collapsible from "components/common/Collapsible";
 
 const HomePage: NextPage = () => {
   console.log(styles);
+  const teamMembers = [
+    {
+      img: "/images/Landing_NFT1.jpg",
+      name: "JM SAN DIEGO",
+      role: "Developer",
+    },
+    {
+      img: "/images/Landing_NFT2.jpg",
+      name: "BRENDAN ANG",
+      role: "WEB3.0 Expert",
+    },
+    {
+      img: "/images/Landing_NFT3.jpg",
+      name: "YILIN XIE",
+      role: "Artist",
+    },
+    {
+      img: "/images/Landing_NFT4.jpg",
+      name: "SANDY KEE",
+      role: "UI/UX Designer",
+    },
+  ];
+
+  const faqList = [
+    {
+      qsn: "IS THERE PRESALE / WHITELIST?",
+      answer:
+        "There is no pre-sale but there is a whitelist where a discounted price would be enabled. Whitelist are exclusively given out by the team",
+    },
+    {
+      qsn: "HOW MUCH WILL IT COST?",
+      answer: "Whitelist: 100 MATIC + Gas. Public: 200 MATIC + Gas",
+    },
+    {
+      qsn: "WHERE IS THE MARKETPLACE?",
+      answer: "Collection would be listed on Opensea Marketplace",
+    },
+    {
+      qsn: "WHY IS IT SO SIMPLE UNLIKE OTHER PROJECTS?",
+      answer:
+        "We released this project to mainly explore and dabble with WEB3.0 technology. Also to provide exposure to our talented artist",
+    },
+  ];
   return (
     <MainPageLayout>
       <section className="homepage">
@@ -67,62 +111,38 @@ const HomePage: NextPage = () => {
               <br />
               <span>THE WOLF TEAM</span>
             </h2>
-            <figure className={`${styles["team__member"]}`}>
-              <Image
-                className={`${styles["member__image"]}`}
-                src={`/images/Landing_NFT1.jpg`}
-                alt="Howling Hustlers Landing Banner"
-                width={200}
-                height={200}
-              />
-              <figcaption>
-                <h3 className={`${styles["member__name"]}`}>JM SAN DIEGO</h3>
-                <p className={`${styles["member__role"]}`}>Developer</p>
-              </figcaption>
-            </figure>
-            <figure className={`${styles["team__member"]}`}>
-              <Image
-                className={`${styles["member__image"]}`}
-                src={`/images/Landing_NFT2.jpg`}
-                alt="Howling Hustlers Landing Banner"
-                width={200}
-                height={200}
-              />
-              <figcaption>
-                <h3 className={`${styles["member__name"]}`}>BRENDAN ANG</h3>
-                <p className={`${styles["member__role"]}`}>WEB3.0 Expert</p>
-              </figcaption>
-            </figure>
-            <figure className={`${styles["team__member"]}`}>
-              <Image
-                className={`${styles["member__image"]}`}
-                src={`/images/Landing_NFT4.jpg`}
-                alt="Howling Hustlers Landing Banner"
-                width={200}
-                height={200}
-              />
-              <figcaption>
-                <h3 className={`${styles["member__name"]}`}>YILIN</h3>
-                <p className={`${styles["member__role"]}`}>Artist</p>
-              </figcaption>
-            </figure>
-            <figure className={`${styles["team__member"]}`}>
-              <Image
-                className={`${styles["member__image"]}`}
-                src={`/images/Landing_NFT3.jpg`}
-                alt="Howling Hustlers Landing Banner"
-                width={200}
-                height={200}
-              />
-              <figcaption>
-                <h3 className={`${styles["member__name"]}`}>SANDY KEE</h3>
-                <p className={`${styles["member__role"]}`}>UI/UX Designer</p>
-              </figcaption>
-            </figure>
+            {teamMembers.map((member, i) => (
+              <figure key={i} className={`${styles["team__member"]}`}>
+                <Image
+                  className={`${styles["member__image"]}`}
+                  src={member.img}
+                  alt="Team member avatar"
+                  width={200}
+                  height={200}
+                />
+                <figcaption>
+                  <h3 className={`${styles["member__name"]}`}>{member.name}</h3>
+                  <p className={`${styles["member__role"]}`}>{member.role}</p>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </section>
         <section className={`container ${styles["homepage__faq"]}`}>
-          <div className="content"></div>
+          <div className="content">
+            <h2 className={`${styles["faq__heading"]}`}>
+              <span>ANY QUESTIONS?</span>
+            </h2>
+            <dl className={`${styles["faq__list"]}`}>
+              {faqList.map((faq, i) => (
+                <Collapsible
+                  key={i}
+                  headerContent={faq.qsn}
+                  content={faq.answer}
+                />
+              ))}
+            </dl>
+          </div>
         </section>
       </section>
     </MainPageLayout>

@@ -1,0 +1,51 @@
+.collapsible h3 {
+  margin: 0;
+}
+
+.collapsible__heading dt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.collapsible__heading dt::selection,
+.collapsible__heading img::selection {
+  color: none;
+  background: none;
+}
+
+.collapsible__heading:hover {
+  background-color: var(--color-cloud);
+}
+
+.collapsible__content {
+  max-height: 500px;
+  padding: 1rem 0;
+  overflow-y: hidden;
+}
+
+.collapsible__content--enter {
+  max-height: 0;
+  padding: 0;
+}
+
+.collapsible__content--enter-active {
+  max-height: 500px;
+  padding: 1rem 0;
+  transition-property: max-height, padding;
+  transition-duration: 300ms;
+}
+
+.collapsible__content--exit {
+  max-height: 500px;
+  padding: 1rem 0;
+}
+
+.collapsible__content--exit-active {
+  max-height: 0;
+  padding: 0;
+  transition-property: max-height, padding;
+  transition-duration: 300ms;
+}

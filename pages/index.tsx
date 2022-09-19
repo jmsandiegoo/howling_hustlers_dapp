@@ -26,7 +26,7 @@ const LandingPage: NextPage = () => {
 
           <Text variant="p" className={styles["landing-page__text"]}>
             Howling hustlers NFTs awaits. <br />
-            Come and join the pack!
+            Press enter to learn more!
           </Text>
           <Link href="/home" passHref>
             <a>
