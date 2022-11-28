@@ -1,20 +1,54 @@
 // import { ethers } from "hardhat";
-import { ethers } from "hardhat";
+import { artifacts, ethers, network } from "hardhat";
+import * as fs from "fs";
+import { Contract } from "hardhat/internal/hardhat-network/stack-traces/model";
+import { HowlingHustlersNFT } from "../typechain-types";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
+  if (network.name === "hardhat") {
+    console.warn(
+      "You are trying to deploy a contract to the Hardhat Network, which" +
+        "gets automatically created and destroyed every time. Use the Hardhat" +
+        " option '--network localhost'"
+    );
+  }
 
-  const lockedAmount = ethers.utils.parseEther("1");
-
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
-
-  await lock.deployed();
-
+  const [deployer] = await ethers.getSigners();
   console.log(
-    `Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
+    "Deploying the contract with the account:",
+    await deployer.getAddress()
+  );
+  
+  console.log("Account balance:", (await deployer.getBalance()).toString());
+
+  const howlingHustlersCF = await ethers.getContractFactory("HowlingHustlersNFT");
+  const howlingHustlersC = await howlingHustlersCF.deploy();
+  await howlingHustlersC.deployed();
+
+  console.log("HH Contract address:", howlingHustlersC.address);
+
+  // We also save the contract's artifacts and address in the frontend directory
+  saveFrontendFiles(howlingHustlersC);
+}
+
+function saveFrontendFiles(contract: HowlingHustlersNFT) {
+  const contractsDir = __dirname + "/../frontend-next/contracts";
+  
+  if (!fs.existsSync(contractsDir)) {
+    fs.mkdirSync(contractsDir);
+  }
+
+  fs.writeFileSync(
+    contractsDir + "/contract-address.json",
+    JSON.stringify({ HowlingHustlersC: contract.address }, undefined, 2)
+  );
+
+  const HowlingHustlersCArtifact =
+    artifacts.readArtifactSync("HowlingHustlersNFT");
+  
+  fs.writeFileSync(
+    contractsDir + "/HowlingHustlersNFT.json",
+    JSON.stringify(HowlingHustlersCArtifact, null, 2)
   );
 }
 
