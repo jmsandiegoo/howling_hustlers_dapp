@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../common/Button";
@@ -8,8 +8,13 @@ import { Size } from "../../types";
 import { screenBreakpoints } from "../../constants";
 import { CSSTransition } from "react-transition-group";
 import cn from "classnames";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { ConnectKitButton } from "connectkit";
+// import { InjectedConnector } from 'wagmi/connectors/injected';
+// import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 
 const Navbar = () => {
+  const { address, isConnected } = useAccount();
   const [isOverlayOpen, setIsOverlayOpen] = useState<boolean>(false);
   const windowSize: Size = useWindowSize();
   const menuOptions = [
@@ -18,7 +23,7 @@ const Navbar = () => {
     { label: "Collection", pathName: "/collection" },
   ];
 
-  const toggleOverlayMenu = () => {
+  const toggleOverlayMenu = (): void => {
     setIsOverlayOpen((prevIsOverlayOpen) => !prevIsOverlayOpen);
   };
 
@@ -98,18 +103,33 @@ const Navbar = () => {
                 </a>
               </li>
             </ul>
-            <Button size="lg" type="primary">
-              CONNECT
-            </Button>
+            {/* <Button size="lg" type="primary" handleClick={toggleWalletModal}>
+              {isConnected ? address : "Connect"}
+            </Button> */}
+            <ConnectKitButton.Custom>
+              {({ isConnected, show, ensName, truncatedAddress }) => {
+                return (
+                  <Button size="lg" type="primary" handleClick={show}>
+                    {isConnected ? ensName ?? truncatedAddress : "CONNECT"}
+                  </Button>
+                );
+              }}
+            </ConnectKitButton.Custom>
           </div>
         ))}
       {/* Nav menu for Mobile */}
       {windowSize.width && windowSize.width <= screenBreakpoints.md && (
         <>
           <div>
-            <Button size="sm" type="primary">
-              CONNECT
-            </Button>
+            <ConnectKitButton.Custom>
+              {({ isConnected, show, ensName, truncatedAddress }) => {
+                return (
+                  <Button size="sm" type="primary" handleClick={show}>
+                    {isConnected ? ensName ?? truncatedAddress : "CONNECT"}
+                  </Button>
+                );
+              }}
+            </ConnectKitButton.Custom>
             <div
               className={styles["main-navbar__hamburger"]}
               onClick={toggleOverlayMenu}

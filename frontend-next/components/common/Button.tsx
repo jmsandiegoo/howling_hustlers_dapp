@@ -8,11 +8,12 @@ type Type = "primary" | "secondary" | string;
 interface ButtonProps {
   size: Size;
   type: Type;
+  handleClick?: React.MouseEventHandler<HTMLButtonElement>;
   otherClassNames?: otherClassNames;
   children: React.ReactNode;
 }
 
-const Button = ({ size, type, otherClassNames, children }: ButtonProps) => {
+const Button = ({ size, type, handleClick ,otherClassNames, children }: ButtonProps) => {
   return (
     <button
       className={cn({
@@ -25,6 +26,7 @@ const Button = ({ size, type, otherClassNames, children }: ButtonProps) => {
         [styles["button--menu"]]: type === "menu",
         ...otherClassNames,
       })}
+      onClick={handleClick}
     >
       {children}
     </button>
