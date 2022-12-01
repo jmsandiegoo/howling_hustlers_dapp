@@ -1,7 +1,7 @@
 // can have multiple className:boolean
 // e.g. {button: true, button-primary: true}
 export interface otherClassNames {
-  className: boolean;
+  [className: string]: boolean;
 }
 
 export interface Size {

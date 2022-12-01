@@ -1,0 +1,61 @@
+.mintpage :global(.content) {
+    /* todo layouting and image */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.mintpage__card {
+    background: var(--color-zeus);
+    border-radius: 5px;
+    padding: 2rem;
+    margin: 2rem;
+    color: var(--color-contrast);
+    text-align: center;
+}
+
+.mintpage__gif {
+    /* position: relative; */
+    justify-self: center;
+    align-self: center;
+}
+
+.card__heading {
+    text-align: center;
+}
+
+.card__form {
+    white-space: nowrap;
+}
+
+.card__form input {
+    margin: 1rem 0;
+    font-size: large;
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+.card__form input[type="number"]::-webkit-inner-spin-button,
+.card__form input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.form__input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group__btn {
+    min-width: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    font-size: 1rem;
+  }
+
+.form__action button {
+    width: 40%;
+}
+
+/* Media Queries */
+  
