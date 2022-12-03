@@ -20,8 +20,30 @@
     align-self: center;
 }
 
+.mintpage__card p {
+    margin: 0.5rem;
+}
+
 .card__heading {
     text-align: center;
+}
+
+.card__address {
+    color: var(--color-yellow);
+}
+
+.card__chip {
+
+    margin: 1rem 0 0.5rem 0;
+    display: inline-block;
+    background-color: var(--color-contrast);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+
+
+    color: var(--color-zeus);
+    font-weight: 600;
+    font-size: 0.6rem;
 }
 
 .card__form {
@@ -52,6 +74,17 @@
     padding-left: 1rem;
     font-size: 1rem;
   }
+
+.form__price {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0 2rem 0;
+}
+
+.form__price a {
+    color: var(--color-yellow);
+    cursor: pointer;
+}
 
 .form__action button {
     width: 40%;

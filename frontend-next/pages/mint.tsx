@@ -24,9 +24,9 @@ const MintPage: NextPage = () => {
         <div className="content">
           <div className={`${styles["mintpage__card"]}`}>
             <h2 className={`${styles["card__heading"]}`}>MINT NFT</h2>
-            <p>0 / 10000 Minted</p>
-            <p>0x12...451</p>
-            <div>PUBLIC SALE</div>
+            <p className={`${styles["card__mint-count"]}`}>0 / 10000 Minted</p>
+            <p className={`${styles["card__address"]}`}>0x12...451</p>
+            <div className={`${styles["card__chip"]}`}>PUBLIC SALE</div>
             <form className={`${styles["card__form"]}`}>
               <div className={`${styles["form__input-group"]}`}>
                 <Button
@@ -51,8 +51,11 @@ const MintPage: NextPage = () => {
                   +
                 </Button>
               </div>
-              <div>
-                <p>Total cost</p> <p>10 MATIC</p>
+              <div className={`${styles["form__price"]}`}>
+                <span>
+                  Total Cost <a>?</a>
+                </span>{" "}
+                <span>10 MATIC</span>
               </div>
               <div className={`${styles["form__action"]}`}>
                 <Button size="lg" type="primary">
