@@ -6,9 +6,10 @@
 }
 
 .mintpage__card {
+    justify-self: center;
     background: var(--color-zeus);
     border-radius: 5px;
-    padding: 2rem;
+    padding: 2rem 3rem;
     margin: 2rem;
     color: var(--color-contrast);
     text-align: center;
@@ -16,8 +17,12 @@
 
 .mintpage__gif {
     /* position: relative; */
+    display: block;
     justify-self: center;
     align-self: center;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
 }
 
 .mintpage__card p {
@@ -33,10 +38,9 @@
 }
 
 .card__chip {
-
-    margin: 1rem 0 0.5rem 0;
     display: inline-block;
     background-color: var(--color-contrast);
+    margin: 1rem 0 0.5rem 0;
     padding: 0.5rem 1rem;
     border-radius: 5px;
 
@@ -55,6 +59,7 @@
     font-size: large;
     text-align: center;
     padding: 0.5rem;
+    width: 90%;
   }
 
 .card__form input[type="number"]::-webkit-inner-spin-button,
